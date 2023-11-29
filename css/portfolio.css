@@ -221,14 +221,13 @@ p {
     overflow: hidden;
     text-overflow: ellipsis;
     background-color: white;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     margin-left: 20px;
 }
 
 .game img {
-    width: 300px;
-    transform: translateX(-10%);
-
+    height: 100px;    
+    padding-left: 70px;
 }
 
 .game ul li a {
