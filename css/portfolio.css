@@ -310,6 +310,7 @@ footer {
       .menu ul li {
         margin-left: 5px;
         padding: 5px;
+        width: 100%;
       }
     
       .typing {
@@ -561,4 +562,9 @@ textarea {
 .link img:hover {
   transition: all ease 0.5s;
   transform: scale(1.2);
+}
+
+.gamecraft img{
+  padding-left: 20px;
+  border-radius: 45%;
 }
