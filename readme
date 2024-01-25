@@ -1,0 +1,39 @@
+<!-- <div class="technowire">
+            <img src="image/TechnoWire_logo.png">
+            <h2>Technowire</h2>
+            <p>TechnoWire streeft naar het begrijpelijk overbrengen van IT-kennis naar jongvolwassenen, met speciale
+               aandacht voor degenen zonder ICT-achtergrond. Wij bieden een centrale hub voor overzichtelijke
+               informatie,
+               waardoor het zoeken op het hele internet overbodig wordt.</p>
+            <hr>
+            <ul>
+               <li>
+                  <a href=http://581827.klas4s23.mid-ica.nl/technowire target="_blank">bekijk</a>
+               </li>
+            </ul>
+         </div>
+         <div class="game">
+            <img src="image/Fist.png" alt="game">
+            <h2>CombatBattles</h2>
+            <p>Een combatgame die ik heb gemaakt met JavaScript voor Gamecraft.
+            </p>
+               <hr>
+               <ul>
+                  <li>
+                     <a href="http://581827.klas4s23.mid-ica.nl/game" target="_blank">bekijk</a>
+                  </li>
+               </ul>
+         </div>
+         <div class="game gamecraft">
+            <img src="image/GetImage.png" alt="gamecraft">
+            <h2 id="gamecraft">GameCraft</h2>
+            <p>GameCraft is een bedrijf met allerlei bordspellen.
+            </p>
+               <hr>
+               <ul>
+                  <li>
+                     <a href="" target="_blank">bekijk</a>
+                  </li>
+               </ul>
+         </div>
+      </div> -->
