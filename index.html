@@ -1,81 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Colin's portfolio</title>
-   <link href="css/portfolio.css" rel="stylesheet" type="text/css">
-</head>
-
-<body>
-   <div class="menu">
-      <h2>Colin Poort</a></h2>
-      <ul>
-         <li><a id="home" href="index.html">Home</a></li>
-         <li><a href="html/about.html">About</a></li>
-         <li><a href="html/contact.html">Contact</a></li>
-      </ul>
-   </div>
-   <header>
-      <div class="background">
-         <h1>Colin Poort</h1>
-         <div class="typing">
-            <h2>Softwaredeveloper</h2>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+      <header class="navbar">
+        <img src="image/IMG_4909.jpg" alt="logo" />
+        <div class="right">
+          <ul>
+            <li><a class="hover-underline-animation" href="index.html">Home</a></li>
+            <li><a class="hover-underline-animation" href="#">About</a></li>
+            <li><a class="hover-underline-animation"href="#">Projects</a></li>
+            <li id="contact"><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </header>
+      <section class="box">
+        <div class="home"> 
+          <h3>Colin Poort</h3>
+            <p>Software Developer</p>
+          <hr>
          </div>
-      </div>
-   </header>
-   <section class="wrapper">
-      <div class="title">
-         <h1>my projects</h1>
-      </div>
-      <div class="project">
-         
-         <div class="box" id="technowire">
-            <img src="image/TechnoWire_logo.png" alt="Technowire ">
-            <h2>Technowire</h2>
-            <p>A platform for sharing knowledge and skills in the field of technology.</p>
-            <hr>
-            <div><a href="http://581827.klas4s23.mid-ica.nl/technowire/" target="_blank">Bekijk</a></div>
-         </div>     
-      
-         <div class="box" id="gamecraft">
-            <img src="image/GetImage.png" alt="Gamecraft ">
-            <h2>Gamecraft</h2>
-            <p>A platform for sharing knowledge and skills in the field of technology.</p>
-            <hr>
-            <div><a href="http://581827.klas4s23.mid-ica.nl/gamecraft/html/" target="_blank">Bekijk</a></div>
-         </div>    
-      
-         <div class="box" id="game">
-            <img src="image/spongebob.png" alt="Game">
-            <h2>Fall</h2>
-            <p>A game I made with Javascript</p>
-            <hr>
-            <div><a href="/game/" target="_blank">Bekijk</a></div>
-         </div>   
-      
-         <div class="box" id="gastenboek"> 
-         <img src="image/gastenboek.jpg" alt="Gastenboek"> 
-         <h2>Gastenboek</h2>
-         <p>Een simpel gastenboek waar je berichten kan versturen met behulp van php  en json.</p>
-         <hr>
-         <div><a href="/gastenboek" target="_blank">Bekijk</a></div>
-      </div>
-    
-   </div>
-   <div class="project row2">
-      <div class="box" id="ergowijzer"> 
-         <img src="image/pixlr.png" alt="Ergowijzer"> 
-         <h2>Ergowijzer</h2>
-         <p>Een groepsopdracht waarbij we een website moesten maken en Engelse video's moesten inleveren.</p>
-         <hr>
-         <div><a href="/l3-pro-3-ergowijzer-dumble" target="_blank">Bekijk</a></div>
-   </div>
-   </section>
-   <footer>
-      &copy; 2023 Colin Poort. All rights reserved.
-   </footer>
-</body>
 
+         <div class="container">
+            <!-- <div class="button-align">
+            <a href="#" class="button">Projects</a>
+            <a href="#" class="button">CV</a>
+         </div> -->
+         <div class="rotated-border"></div>
+
+         <div class="box-text">
+
+         <h2>I am Colin Poort, a Software Developer</p>
+         <h1>I love to build websites</h1>
+         <p>I have experience in front-end development using HTML, CSS, and JavaScript, as well as back-end development with PHP, C# and databases like MySQL. I enjoy creating responsive and user-friendly web applications that solve real-world problems.</p>
+      </div>
+      
+         <img src="image/IMG_4909.jpg" alt="Colin">
+         </div>
+         </section>
+       
+         <section class="about">
+            <h1>Learn more</h1>
+            <p>Colin Poort, a 16-year-old software developer, enjoys front-end coding. Passionate about fitness and gaming, Colin skillfully balances his time between coding projects, working out, and gaming adventures.</p>
+         </section>
+        
+         <footer>
+            <p>©All rights reserved - <a href="#">Colin Poort</a></p>
+            <div class="social">
+               <a href=""><img id="instagram" src="image/instagram.png" alt="instagram"></a>
+               <a href=""><img id="linkedin" src="image/linkedin.png" alt="linkedin"></a>
+               <a href=""><img id="github" src="image/github.png" alt="linkedin"></a>
+         </div>
+   
+         </footer>
+         </body>
+<script src="js/index.js"></script>
 </html>
