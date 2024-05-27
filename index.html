@@ -6,6 +6,8 @@
     <link href="css/style.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css"> -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -13,18 +15,28 @@
     <title>Document</title>
   </head>
   <body>
-      <header class="navbar">
-        <img src="image/IMG_4909.jpg" alt="logo" />
-        <div class="right">
-          <ul>
-            <li><a class="hover-underline-animation" href="index.html">Home</a></li>
-            <li><a class="hover-underline-animation" href="#">About</a></li>
-            <li><a class="hover-underline-animation"href="#">Projects</a></li>
-            <li id="contact"><a href="#">Contact</a></li>
-          </ul>
+   <div class="background">
+      <div class="shape shape1"></div>
+      <div class="shape shape2"></div>
+      <div class="shape shape3"></div>
+      <div class="shape shape4"></div>
+  </div>
+  <header class="navbar" id="navbar">
+    <img src="image/IMG_4909.jpg" alt="logo" />
+    <div class="right">
+        <div class="menu-icon" onclick="toggleMenu()">
+            &#9776; <!-- Hamburger icon -->
         </div>
-      </header>
-      <section class="box">
+        <ul>
+            <li><a class="hover-underline-animation" href="#home">Home</a></li>
+            <li><a class="hover-underline-animation" href="#about">About</a></li>
+            <li><a class="hover-underline-animation" href="#projects">Projects</a></li>
+            <li id="contact"><a href="#contact-page">Contact</a></li>
+        </ul>
+    </div>
+</header>
+      
+    <section class="box" id="home">
         <div class="home"> 
           <h3>Colin Poort</h3>
             <p>Software Developer</p>
@@ -32,10 +44,6 @@
          </div>
 
          <div class="container">
-            <!-- <div class="button-align">
-            <a href="#" class="button">Projects</a>
-            <a href="#" class="button">CV</a>
-         </div> -->
          <div class="rotated-border"></div>
 
          <div class="box-text">
@@ -48,14 +56,96 @@
          <img src="image/IMG_4909.jpg" alt="Colin">
          </div>
          </section>
-       
-         <section class="about">
-            <h1>Learn more</h1>
-            <p>Colin Poort, a 16-year-old software developer, enjoys front-end coding. Passionate about fitness and gaming, Colin skillfully balances his time between coding projects, working out, and gaming adventures.</p>
+         <section class="choose" id="about">
+          <div class="box-choose">
+ 
+             <div class="title-reason">
+             <h1>Why choose Colin Poort</h1>
+          </div>
+          <div class="column">
+          <img src="image/commitment.png" alt="commitment" class="icon">
+          <h1>Dedicated</h1>
+          <p> I'm fully committed to every task I take on. I make sure things get done right, on time, and up to the highest standards. When you hire me, you're getting someone who's all in, ready to achieve success and deliver great results.</p>
+       </div>
+       <div class="column">
+          <img src="image/innovation.png" alt="commitment" class="icon">
+          <h1>Innovative Thinker</h1>
+          <p>I'm good at thinking outside the box and finding fresh approaches to challenges. Whether it's through creative brainstorming sessions, embracing new technologies, or adapting to changing circumstances, I thrive on generating innovative solutions. By bringing me on board, you'll benefit from my ability to spark creativity and drive innovation within your team.</p>
+             </div>
+       <div class="column">
+          <img src="image/problem-solve.png" alt="commitment" class="icon">
+          <h1>Problem-Solver</h1>
+          <p> I love coming up with new ideas to tackle challenges. Whether it's finding fresh approaches, using the latest tech, or thinking outside the box, I'm always eager to explore different solutions. Hiring me means having someone who brings innovation and new perspectives to your projects.</p>
+       </div>
+          </div>
          </section>
+         <section class="about">
+            <div class="row top-row">
+                <div class="text-content">
+                    <h1>Learn more</h1>
+                    <p>Colin Poort, a 16-year-old software developer, enjoys front-end coding. Passionate about fitness and gaming, Colin skillfully balances his time between coding projects, working out, and gaming adventures.</p>
+                </div>
+                <img src="image/teamwork.jpg" alt="teamwork" class="side-image about-image" id="img-shadow">
+            </div>
+            <div class="row bottom-row">
+                <img src="image/coding1.png" alt="code" class="bottom-image about-image">
+                <img src="image/coding2.jpg" alt="code" class="bottom-image about-image">
+            </div>
+        </section>
+
+     
         
+        <section class="projects" id="projects">
+         <div class="project-title">
+            <h1>Projects</h1>
+         </div>
+         <div class="main-carousel">
+             <div class="carousel-cell">
+               <div class="carousel-cell">
+                  <img src="image/TechnoWire_logo.png" alt="technowire" id="technowire">
+                  <h1>Text</h1>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
+                  <a href="#">Bekijk</a>
+              </div>
+             </div>
+             <div class="carousel-cell">
+                 <img src="image/spongebob.png" alt="fall game" id="spongebob">
+                 <h1>Text</h1>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
+                 <a href="#">Bekijk</a>
+             </div>
+             <div class="carousel-cell">
+                 <img src="image/gastenboek.jpg" alt="gastenboek" id="gastenboek">
+                 <h1>Text</h1>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
+                 <a href="#">Bekijk</a>
+             </div>
+             <div class="carousel-cell">
+                 <img src="image/GetImage.png" alt="gamecraft" id="gamecraft">
+                 <h1>Text</h1>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
+                 <a href="#">Bekijk</a>
+             </div>  
+              <div class="carousel-cell">
+                 <img src="image/pixlr2.png" alt="ergowijzer" id="ergowijzer">
+                 <h1>Text</h1>
+                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
+                 <a href="#">Bekijk</a>
+             </div>
+         </div>
+     </section>
+     
+     <section class="contact" id="contact-page">
+      <form action="" class="form" id="contact-form">
+        <input type="text" id="name" name="name" placeholder="Name" required>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+        <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+      <div id="alert" class="alert"></div> <!-- Alert container -->
+    </section>
          <footer>
-            <p>©All rights reserved - <a href="#">Colin Poort</a></p>
+            <p>©All rights reserved - <a href="#home">Colin Poort</a></p>
             <div class="social">
                <a href=""><img id="instagram" src="image/instagram.png" alt="instagram"></a>
                <a href=""><img id="linkedin" src="image/linkedin.png" alt="linkedin"></a>
@@ -65,4 +155,9 @@
          </footer>
          </body>
 <script src="js/index.js"></script>
+<script src="js/flickity.js"></script>
+<script src="js/navbar.js"></script>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript" src="js/email.js"></script> <!-- Link to your external JS file -->
+
 </html>

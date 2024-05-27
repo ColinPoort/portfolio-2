@@ -11,3 +11,19 @@ window.addEventListener('scroll', function() {
 });
 
 
+document.querySelector('.prev-btn').addEventListener('click', function() {
+  document.querySelector('.slider-container').scrollBy({
+    left: -100, // Adjust scroll amount
+    behavior: 'smooth'
+  });
+});
+
+document.querySelector('.next-btn').addEventListener('click', function() {
+  document.querySelector('.slider-container').scrollBy({
+    left: 100, // Adjust scroll amount
+    behavior: 'smooth'
+  });
+});
+
+// email js
+
