@@ -27,7 +27,7 @@
         <div class="menu-icon" onclick="toggleMenu()">
             &#9776; <!-- Hamburger icon -->
         </div>
-        <ul>
+        <ul id="nav">
             <li><a class="hover-underline-animation" href="#home">Home</a></li>
             <li><a class="hover-underline-animation" href="#about">About</a></li>
             <li><a class="hover-underline-animation" href="#projects">Projects</a></li>
@@ -51,6 +51,7 @@
          <h2>I am Colin Poort, a Software Developer</p>
          <h1>I love to build websites</h1>
          <p>I have experience in front-end development using HTML, CSS, and JavaScript, as well as back-end development with PHP, C# and databases like MySQL. I enjoy creating responsive and user-friendly web applications that solve real-world problems.</p>
+         <a href="image/CV_Colin.pdf" class="cv">My CV</a>
       </div>
       
          <img src="image/IMG_4909.jpg" alt="Colin">
@@ -93,7 +94,6 @@
             </div>
         </section>
 
-     
         
         <section class="projects" id="projects">
          <div class="project-title">
@@ -103,53 +103,96 @@
              <div class="carousel-cell">
                <div class="carousel-cell">
                   <img src="image/TechnoWire_logo.png" alt="technowire" id="technowire">
-                  <h1>Text</h1>
-                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
-                  <a href="#">Bekijk</a>
+                  <h1>Technowire</h1>
+                  <p>A platform for sharing knowledge and skills in the field of technology.</p>
+                  <a href="/technowire">Bekijk</a>
               </div>
              </div>
              <div class="carousel-cell">
                  <img src="image/spongebob.png" alt="fall game" id="spongebob">
-                 <h1>Text</h1>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
-                 <a href="#">Bekijk</a>
+                 <h1>Fall</h1>
+                 <p>A game I made with JavaScript.</p>
+                 <a href="/game">Bekijk</a>
              </div>
              <div class="carousel-cell">
-                 <img src="image/gastenboek.jpg" alt="gastenboek" id="gastenboek">
-                 <h1>Text</h1>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
-                 <a href="#">Bekijk</a>
+                 <img src="image/gastenboek.jpg" alt="guestbook" id="gastenboek">
+                 <h1>Guestbook</h1>
+                 <p>A simple guestbook you can send messages, I made this with PHP and Json.</p>
+                 <a href="/gastenboek">Bekijk</a>
              </div>
              <div class="carousel-cell">
                  <img src="image/GetImage.png" alt="gamecraft" id="gamecraft">
-                 <h1>Text</h1>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
-                 <a href="#">Bekijk</a>
+                 <h1>Gamecraft</h1>
+                 <p>A platform for sharing knowledge and skills in the field of technology.</p>
+                 <a href="/gamecraft">Bekijk</a>
              </div>  
               <div class="carousel-cell">
                  <img src="image/pixlr2.png" alt="ergowijzer" id="ergowijzer">
-                 <h1>Text</h1>
-                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore enim consequatur, ea debitis nostrum veritatis quisquam repudiandae nihil quaerat rerum magnam animi et ex? Tempore maxime inventore molestiae consequuntur ratione!</p>
-                 <a href="#">Bekijk</a>
+                 <h1>Ergowijzer</h1>
+                 <p>A groups project where we had to make a website and hand it in through a website.</p>
+                 <a href="/l3-pro-3-ergowijzer-dumble">Bekijk</a>
              </div>
          </div>
      </section>
      
-     <section class="contact" id="contact-page">
-      <form action="" class="form" id="contact-form">
-        <input type="text" id="name" name="name" placeholder="Name" required>
-        <input type="email" id="email" name="email" placeholder="Email" required>
-        <textarea name="message" id="message" rows="5" placeholder="Message" required></textarea>
-        <button type="submit">Submit</button>
-      </form>
+
+    <div class="container-contact">
+  <div class="box1">
+    <h2>Contact Me</h2>
+    <p>
+      I will read most emails. Send me any message you want and I'll get
+      back to you.<br /><br />
+      I need your Name and Email Address, but you won't receive anything
+      other than your reply.
+    </p>
+  </div>
+  <div class="contact-form">
+    <form>
+      <div class="form-group">
+        <input type="text" id="name" name="name" required placeholder=" " />
+        <label for="name">Name</label>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          placeholder=" "
+        />
+        <label for="email">Email</label>
+      </div>
+      <div class="form-group">
+        <textarea
+          id="message"
+          name="message"
+          required
+          placeholder=" "
+        ></textarea>
+        <label for="message">Message</label>
+      </div>
+      <div class="form-group">
+        <button type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+  <div class="box2">
+    <h2>Contact Info</h2>
+    <p>Email:<br />colinpoort@hotmail.com</p>
+    <p>Tel:<br />06 2844 9633</p>
+    <p>Address:<br />Kiekendief 1, 3752SM</p>
+  </div>
+</div>
+
+
       <div id="alert" class="alert"></div> <!-- Alert container -->
     </section>
          <footer>
             <p>©All rights reserved - <a href="#home">Colin Poort</a></p>
             <div class="social">
-               <a href=""><img id="instagram" src="image/instagram.png" alt="instagram"></a>
-               <a href=""><img id="linkedin" src="image/linkedin.png" alt="linkedin"></a>
-               <a href=""><img id="github" src="image/github.png" alt="linkedin"></a>
+               <a href="https://www.instagram.com/colin_poort/"><img id="instagram" src="image/instagram.png" alt="instagram"></a>
+               <a href="https://www.linkedin.com/in/colin-poort-587a7b295/"><img id="linkedin" src="image/linkedin.png" alt="linkedin"></a>
+               <a href="https://github.com/ColinPoort"><img id="github" src="image/github.png" alt="linkedin"></a>
          </div>
    
          </footer>
@@ -157,6 +200,7 @@
 <script src="js/index.js"></script>
 <script src="js/flickity.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/hamburger.js"></script>
 <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 <script type="text/javascript" src="js/email.js"></script> <!-- Link to your external JS file -->
 
