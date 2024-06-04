@@ -1075,6 +1075,7 @@ https://flickity.metafizzy.co
 @media (max-width: 768px) {
 .container-contact{
   flex-direction: column;
+  margin-bottom: 150px;
 }
 .contact-form{
   width: 300px;
@@ -1084,7 +1085,7 @@ https://flickity.metafizzy.co
   right: 15px;
 }
 .box1{
-  top: 0px;
+  top: -100px;
   left: 25px;
   width: 250px;
 }
