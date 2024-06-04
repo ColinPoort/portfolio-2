@@ -2,7 +2,7 @@
   --white: #ffffff;
   --black: #1e1e1e;
   --dark-gray: #161616;
-  --medium-gray: #333333;
+  --medium-gray: #302f2f;
   --blue: #0673cc;
   --light-gray: #333333;
   --gray: #444444;
@@ -19,21 +19,20 @@ body {
   font-family: "Poppins", sans-serif;
   background-color: var(--black);
 }
-
 .navbar {
   color: var(--white);
   padding: 20px 0;
   background-color: var(--dark-gray);
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Adjusted to space-between */
+  justify-content: space-between;
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  transition: top 0.3s;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
 
 .navbar ul {
   list-style: none;
@@ -931,7 +930,6 @@ https://flickity.metafizzy.co
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #1e1e1e;
   margin: 0;
   position: relative;
 }
@@ -954,6 +952,7 @@ https://flickity.metafizzy.co
 .form-group {
   position: relative;
   margin-bottom: 25px;
+  font-family: "Poppins", sans-serif;
 }
 
 .form-group input,
@@ -988,14 +987,14 @@ https://flickity.metafizzy.co
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label {
   bottom: 40px;
-  /* font-size: 12px; */
+  font-size: 12px;
   color: white;
 }
 
 .form-group textarea:focus + label,
 .form-group textarea:not(:placeholder-shown) + label {
   bottom: 125px; /* Specific change for the textarea label */
-  /* font-size: 12px; */
+  font-size: 12px;
   color: white;
 }
 
@@ -1011,17 +1010,17 @@ https://flickity.metafizzy.co
 
 .form-group button {
   display: inline-block;
-  background: #007bff;
+  background: var(--black);
   color: #fff;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.5s;
 }
 
 .form-group button:hover {
-  background: #0056b3;
+  background: var(--blue);
 }
 .form-group label {
   color: #ffff; /* Change the color to black for all labels */
@@ -1030,7 +1029,8 @@ https://flickity.metafizzy.co
 .box1 {
   background-color: #575656;
   width: 400px;
-  height: 240px;
+  height: auto;
+  padding-bottom: 20px;
   box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
   z-index: 1;
   position: absolute;
@@ -1043,6 +1043,7 @@ https://flickity.metafizzy.co
 .box1 h2 {
   text-align: center;
   font-weight: bold;
+  font-size: 40px;
 }
 .box1 p {
   text-align: left;
@@ -1058,7 +1059,7 @@ https://flickity.metafizzy.co
   z-index: 3;
   position: absolute;
   right: 250px;
-  top: 270px;
+  top: 400px;
   border-radius: 5px;
 }
 .box2 h2 {
@@ -1081,13 +1082,12 @@ https://flickity.metafizzy.co
   right: 15px;
 }
 .box1{
-  top: 30px;
+  top: 0px;
   left: 25px;
   width: 250px;
 }
 .box1 p{
   margin: 10px;
-
 }
 }
 

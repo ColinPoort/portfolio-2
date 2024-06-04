@@ -1,11 +1,9 @@
-// js/email.js
-
 document.addEventListener("DOMContentLoaded", function () {
   emailjs.init("LFhKlHMi6qymIV-YK"); // Replace 'YOUR_USER_ID' with your actual user ID from EmailJS
 
-  document
-    .getElementById("contact-form")
-    .addEventListener("submit", function (event) {
+  var contactForm = document.getElementById("contact-form");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
       event.preventDefault();
 
       const alertBox = document.getElementById("alert");
@@ -21,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
               alertBox.style.display = "none"; // Hide the alert box after transition ends
             }, 500); // Match the transition duration in CSS
           }, 5000); // Hide after 5 seconds
-          document.getElementById("contact-form").reset(); // Reset the form
+          contactForm.reset(); // Reset the form
         },
         function (error) {
           alertBox.textContent =
@@ -37,4 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       );
     });
+  } else {
+    console.error("Form with id 'contact-form' not found");
+  }
 });

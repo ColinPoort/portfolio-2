@@ -1,19 +1,16 @@
-// navbar scroll
-
 var prevScrollpos = window.pageYOffset;
+var isMobile = window.matchMedia("(max-width: 768px)").matches;
+
 window.onscroll = function() {
-var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-100px";
+  var currentScrollPos = window.pageYOffset;
+  var navbar = document.getElementById("navbar");
+
+  if (isMobile) {
+    if (prevScrollpos > currentScrollPos) {
+      navbar.style.top = "0";
+    } else {
+      navbar.style.top = "-" + navbar.offsetHeight + "px";
+    }
   }
   prevScrollpos = currentScrollPos;
-}
-
-
-// toggle menu
-function toggleMenu() {
-  const navbar = document.getElementById('navbar');
-  navbar.classList.toggle('menu-open');
 }
