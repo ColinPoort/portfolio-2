@@ -1045,7 +1045,7 @@ https://flickity.metafizzy.co
 .box1 h2 {
   text-align: center;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 60px;
 }
 .box1 p {
   text-align: left;
@@ -1088,6 +1088,9 @@ https://flickity.metafizzy.co
   top: -100px;
   left: 25px;
   width: 250px;
+}
+.box1 h2{
+  font-size: 40px !important;
 }
 .box1 p{
   margin: 10px;
