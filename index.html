@@ -136,54 +136,44 @@
      </section>
      
 
-    <div class="container-contact" id="contact-form">
-  <div class="box1">
-    <h2>Contact Me</h2>
-    <p>
-      I will read most emails. Send me any message you want and I'll get
-      back to you.<br /><br />
-      I need your Name and Email Address, but you won't receive anything
-      other than your reply.
-    </p>
-  </div>
-  <div class="contact-form">
-    <form id="contact-form" action="email.php" method="post">
-      <div class="form-group">
-        <input type="text" id="name" name="name" required placeholder=" " />
-        <label for="name">Name</label>
+     <div class="container-contact">
+      <div class="box1">
+        <h2>Contact Me</h2>
+        <p>
+          I will read most emails. Send me any message you want and I'll get
+          back to you.<br /><br />
+          I need your Name and Email Address, but you won't receive anything
+          other than your reply.
+        </p>
       </div>
-      <div class="form-group">
-        <input
-          type="email"
-          id="email"
-          name="email"
-          required
-          placeholder=" "
-        />
-        <label for="email">Email</label>
-      </div>  
-      <div class="form-group">
-        <textarea
-          id="message"
-          name="message"
-          required
-          placeholder=" "
-        ></textarea>
-        <label for="message">Message</label>
+      <div class="contact-form">
+        <form id="contact-form" action="email.js" method="post">
+          <div class="form-group">
+            <input type="text" id="name" name="name" required/>
+            <label for="name">Name</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" name="email" required/>
+            <label for="email">Email</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" name="message" required></textarea>
+            <label for="message">Message</label>
+          </div>
+          <div class="form-group">
+            <button type="submit" value="submit">Send</button>
+          </div>
+        </form>
       </div>
-      <div class="form-group">
-        <button type="submit" value="submit">Send</button>
+      <div id="alert" class="alert"></div> <!-- Alert container -->  
+      <div class="box2">
+        <h2>Contact Info</h2>
+        <p>Email:<br />colinpoort@hotmail.com</p>
+        <p>Tel:<br />06 2844 9633</p>
+        <p>Address:<br />Kiekendief 1, 3752SM</p>
       </div>
-    </form>
-  </div>
-  <div class="box2">
-    <h2>Contact Info</h2>
-    <p>Email:<br />colinpoort@hotmail.com</p>
-    <p>Tel:<br />06 2844 9633</p>
-    <p>Address:<br />Kiekendief 1, 3752SM</p>
-  </div>
-</div>
-      <div id="alert" class="alert"></div> <!-- Alert container -->
+    </div>
+        <div id="alert" class="alert"></div> <!-- Alert container -->
       
     </section>
          <footer>
@@ -200,8 +190,8 @@
 <script src="js/flickity.js"></script>
 <script src="js/navbar.js"></script>
 <script src="js/hamburger.js"></script>
-<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script type="text/javascript" src="js/email.js"></script> <!-- Link to your external JS file -->
+<script src="js/form.js"></script>
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script src="js/email.js"></script>
 
 </html>

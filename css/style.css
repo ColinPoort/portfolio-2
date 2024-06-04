@@ -955,6 +955,7 @@ https://flickity.metafizzy.co
   font-family: "Poppins", sans-serif;
 }
 
+
 .form-group input,
 .form-group textarea {
   width: 90%;
@@ -984,20 +985,19 @@ https://flickity.metafizzy.co
 .form-group textarea {
   color: white;
 }
-.form-group input:focus + label,
-.form-group input:not(:placeholder-shown) + label {
+.form-group input:focus + label.active,
+.form-group input.active + label {
   bottom: 40px;
   font-size: 12px;
   color: white;
 }
 
-.form-group textarea:focus + label,
-.form-group textarea:not(:placeholder-shown) + label {
-  bottom: 125px; /* Specific change for the textarea label */
+.form-group textarea:focus + label.active,
+.form-group textarea.active + label {
+  bottom: 125px; 
   font-size: 12px;
   color: white;
 }
-
 .form-group textarea {
   resize: none;
   height: 100px;
