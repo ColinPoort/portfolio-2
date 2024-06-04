@@ -1016,11 +1016,13 @@ https://flickity.metafizzy.co
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.5s;
+  transition:  0.5s;
+  border: 1px solid var(--white)
 }
 
 .form-group button:hover {
   background: var(--blue);
+  border-color: var(--blue);
 }
 .form-group label {
   color: #ffff; /* Change the color to black for all labels */
