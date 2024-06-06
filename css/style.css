@@ -151,6 +151,9 @@ body {
     width: 300px !important;
     height: auto !important;
   }
+  #login{
+    height: 150px;
+  }
   .navbar ul li {
     margin: 10px 0;
   }
@@ -914,10 +917,14 @@ https://flickity.metafizzy.co
 
 #gamecraft {
   height: 150px;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 #ergowijzer {
   height: 150px;
+}
+#login{
+  height: 200px;
+  border-radius: 5px;
 }
 .project-title h1 {
   font-size: 60px;
@@ -1046,7 +1053,7 @@ https://flickity.metafizzy.co
 .box1 h2 {
   text-align: center;
   font-weight: bold;
-  font-size: 60px;
+  font-size: 45px;
 }
 .box1 p {
   text-align: left;
