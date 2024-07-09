@@ -298,15 +298,7 @@ body {
 }
 
 .transparent {
-  color: transparent;
-  background: linear-gradient(90deg, var(--blue), transparent);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: border-box;
-  text-fill-color: transparent;
-  -webkit-text-stroke: 2px var(--white);
-  border-radius: 5px;
-  padding: 0% 2%;
+ 
 }
 
 
@@ -386,6 +378,15 @@ body {
   height: 500px;
   border-color: var(--light-gray);
 }
+
+.box-text h1 {
+  font-size: 2rem;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  border-radius: 5px;
+}
+
+
 
 .container h1 {
   font-weight: bold;
