@@ -18,6 +18,7 @@ html {
 body {
   font-family: "Poppins", sans-serif;
   background-color: var(--black);
+  overflow-x: hidden;
 }
 .navbar {
   color: var(--white);
@@ -75,9 +76,6 @@ body {
   .container img {
     max-height: 400px;
     max-width: fit-content;
-  }
-  .rotated-border {
-    display: none;
   }
   .navbar {
     width: 100vw;
@@ -278,7 +276,7 @@ body {
 .home h3 {
   font-size: 55px;
   color: var(--white);
-  margin-top: 10%;
+  margin-top: 6%;
 }
 
 .home h3,
@@ -515,7 +513,6 @@ footer a {
   width: 600px;
   height: auto;
   margin: 10px;
-  margin-bottom: 150px;
 }
 
 #img-shadow {
@@ -1033,7 +1030,7 @@ https://flickity.metafizzy.co
   border-color: var(--blue);
 }
 .form-group label {
-  color: #ffff; /* Change the color to black for all labels */
+  color: #ffff; 
 }
 
 .box1 {
