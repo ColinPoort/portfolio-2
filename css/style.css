@@ -268,7 +268,7 @@ body {
 
 .home hr {
   border-color: var(--dark-gray);
-  margin: 0 10% 0 5%;
+  margin: 0 5% 0 5%;
   margin-bottom: 70px;
   z-index: 1;
 }
@@ -296,6 +296,19 @@ body {
   white-space: nowrap;
   width: 200px;
 }
+
+.transparent {
+  color: transparent;
+  background: linear-gradient(90deg, var(--blue), transparent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: border-box;
+  text-fill-color: transparent;
+  -webkit-text-stroke: 2px var(--white);
+  border-radius: 5px;
+  padding: 0% 2%;
+}
+
 
 @keyframes shine {
   0% {
