@@ -14,6 +14,7 @@ html {
 * {
   margin: 0;
   padding: 0;
+
 }
 body {
   font-family: "Poppins", sans-serif;
@@ -67,6 +68,9 @@ body {
 
 /* Adjustments for screens up to 768px wide */
 @media (max-width: 768px) {
+  body{
+    overflow-x: hidden !important;
+  }
   h1 {
     font-size: 30px !important;
   }
@@ -136,7 +140,7 @@ body {
     width: fit-content !important;
   }
   .rotated-border {
-    width: 0;
+    display: none;
   }
   .menu-open .navbar ul {
     display: flex !important;
@@ -527,6 +531,7 @@ footer a {
   width: 600px;
   height: auto;
   margin: 10px;
+  margin-right: 0px;
 }
 
 #img-shadow {
