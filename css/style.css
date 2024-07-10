@@ -21,6 +21,67 @@ body {
   background-color: var(--black);
   overflow-x: hidden;
 }
+
+/* General selection styles */
+::selection {
+  background-color: var(--blue);
+  color: black;
+}
+
+::-moz-selection {
+  background-color: var(--blue);
+  color: black;
+}
+
+/* Selection styles for h1 */
+h1::selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+h1::-moz-selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+/* Selection styles for h3 */
+h3::selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+h3::-moz-selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+h2::selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+
+h2::-moz-selection {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--white); 
+  text-shadow: 8px 7px 0px var(--blue);
+  font-weight: bold;
+  background-color: transparent;
+}
+
 .navbar {
   color: var(--white);
   padding: 20px 0;
@@ -299,10 +360,6 @@ body {
   font-weight: 600;
   white-space: nowrap;
   width: 200px;
-}
-
-.transparent {
- 
 }
 
 
