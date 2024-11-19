@@ -36,7 +36,7 @@ body {
 /* Selection styles for h1 */
 h1::selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);  
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
@@ -88,7 +88,8 @@ h2::-moz-selection {
   background-color: var(--dark-gray);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  column-gap: 50%;
   position: fixed;
   width: 100%;
   top: 0;
@@ -1228,3 +1229,6 @@ https://flickity.metafizzy.co
   height: 300px;
 }
 
+section {
+  min-height: 70vh;
+}
