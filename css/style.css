@@ -36,7 +36,9 @@ body {
 /* Selection styles for h1 */
 h1::selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white);  
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
@@ -44,7 +46,10 @@ h1::selection {
 
 h1::-moz-selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+  /* Firefox doesn't support -webkit-text-stroke; use text-shadow for a visible effect */
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
@@ -53,7 +58,9 @@ h1::-moz-selection {
 /* Selection styles for h3 */
 h3::selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
@@ -61,14 +68,18 @@ h3::selection {
 
 h3::-moz-selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
 }
 h2::selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
@@ -76,10 +87,20 @@ h2::selection {
 
 h2::-moz-selection {
   color: transparent;
-  -webkit-text-stroke: 1px var(--white); 
+  -webkit-text-stroke: 1px var(--white);
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
   text-shadow: 8px 7px 0px var(--blue);
   font-weight: bold;
   background-color: transparent;
+}
+
+/* Ensure headings have a webkit stroke so making the fill transparent on ::selection reveals the stroke in WebKit/Blink browsers */
+h1, h2, h3 {
+  -webkit-text-stroke: 1px var(--white);
+  /* keep normal fill color behavior - stroke same color as fill so it's not visible until fill is removed */
+  -webkit-text-fill-color: initial;
+  -moz-text-fill-color: initial;
 }
 
 .navbar {
@@ -354,6 +375,7 @@ h2::-moz-selection {
   font-size: 20px;
   background: linear-gradient(to right, #4d4d4d 0, white 10%, #4d4d4d 20%);
   background-position: 0;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: shine 3s infinite linear;
