@@ -1,12 +1,13 @@
 :root {
-  --white: #ffffff;
-  --black: #1e1e1e;
-  --dark-gray: #161616;
-  --medium-gray: #302f2f;
-  --blue: #0673cc;
-  --light-gray: #333333;
-  --gray: #444444;
-  --button: #b9b7b7;
+  /* Ocean / Teal palette */
+  --white: #F7FFF7;       /* soft off-white for text */
+  --black: #071422;       /* deep navy background */
+  --dark-gray: #0B2A3A;   /* dark teal for bars and panels */
+  --medium-gray: #163F4A; /* medium teal for accents */
+  --blue: #00B4D8;        /* bright teal/cyan accent */
+  --light-gray: #2A6F78;  /* lighter teal for borders */
+  --gray: #3B6B6F;        /* neutral teal-gray */
+  --button: #66D9E8;      /* button / interactive color */
 }
 html {
   scroll-behavior: smooth;
@@ -381,8 +382,11 @@ h1, h2, h3 {
   animation: shine 3s infinite linear;
   animation-fill-mode: forwards;
   font-weight: 600;
-  white-space: nowrap;
-  width: 200px;
+  white-space: nowrap; /* keep on one line */
+  display: inline-block; /* let width fit content */
+  width: auto; /* allow full word to show */
+  max-width: 90%; /* prevent overflow on small screens */
+  overflow: visible;
 }
 
 
@@ -1038,7 +1042,7 @@ https://flickity.metafizzy.co
   position: relative;
 }
 .contact-form {
-  background: #302f2f;
+  background: var(--dark-gray);
   padding: 20px;
   padding-top: 30px;
   border-radius: 5px;
@@ -1050,7 +1054,7 @@ https://flickity.metafizzy.co
 .contact-form h2 {
   margin-bottom: 20px;
   font-size: 24px;
-  color: #333;
+  color: var(--white);
 }
 
 .form-group {
@@ -1065,29 +1069,29 @@ https://flickity.metafizzy.co
   width: 90%;
   padding: 10px 5px;
   border: none;
-  border-bottom: 2px solid #ffff;
+  border-bottom: 2px solid var(--white);
   outline: none;
   transition: border-color 0.3s, padding-top 0.3s;
-  background-color: #302f2f;
+  background-color: var(--dark-gray);
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
-  border-bottom-color: white;
+  border-bottom-color: var(--white);
 }
 
 .form-group label {
   position: absolute;
   left: 5px;
   bottom: 10px;
-  color: #666;
+  color: var(--button);
   pointer-events: none;
   transition: all 0.3s ease;
 }
 
 .form-group input,
 .form-group textarea {
-  color: white;
+  color: var(--white);
 }
 .form-group input:focus + label.active,
 .form-group input.active + label {
@@ -1133,7 +1137,7 @@ https://flickity.metafizzy.co
 }
 
 .box1 {
-  background-color: #575656;
+  background-color: var(--gray);
   width: 400px;
   height: auto;
   padding-bottom: 20px;
@@ -1142,7 +1146,7 @@ https://flickity.metafizzy.co
   position: absolute;
   left: 130px;
   top: 130px;
-  color: #ffff;
+  color: var(--white);
   border-radius: 5px;
 }
 
@@ -1157,11 +1161,11 @@ https://flickity.metafizzy.co
 }
 
 .box2 {
-  background-color: #1e1e1e;
+  background-color: var(--black);
   box-shadow: 20px 20px 4px rgba(0, 0, 0, 0.25);
   height: fit-content;
   width: 250px;
-  color: #fff;
+  color: var(--white);
   z-index: 3;
   position: absolute;
   right: 250px;
