@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colin Poort — Software Developer / Crafting Modern Web Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-bg: #0a0a0a; --secondary-bg: #141414; --accent-color: #3b82f6;
+            --text-primary: #ffffff; --text-secondary: #a3a3a3; --card-bg: #1a1a1a;
+        }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--primary-bg); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+        html { scroll-behavior: smooth; }
+        
+        /* Navigation */
+        nav { position: fixed; top: 0; width: 100%; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); padding: 1.5rem 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.3s ease; }
+        nav.scrolled { padding: 1rem 5%; box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5); }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s ease; position: relative; display: inline-block; }
+        .nav-links a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -5px; left: 0; background-color: var(--accent-color); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--text-primary); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a span { display: inline-block; transition: transform 0.3s ease; }
+        .nav-links a:hover span { animation: letterScroll 0.5s ease forwards; }
+        @keyframes letterScroll {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        .contact-btn { padding: 0.7rem 1.5rem; background-color: transparent; border: 2px solid var(--accent-color); color: var(--text-primary); border-radius: 50px; cursor: pointer; transition: all 0.3s ease; font-weight: 500; text-decoration: none; display: inline-block; }
+        .contact-btn:hover { background-color: var(--accent-color); transform: translateY(-2px); box-shadow: 0 5px 20px rgba(59, 130, 246, 0.4); }
+        
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 5% 5rem; position: relative; overflow: hidden; background-color: #000; }
+        
+        .hero-grid-container {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            width: 300vw;
+            height: 300vh;
+            transform: translate(-50%, -50%) scale(1);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            transition: transform 0.1s ease-out;
+            z-index: 0;
+        }
+        
+        .hero-grid-item {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .hero-grid-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .hero-grid-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        
+        .hero-content { max-width: 900px; text-align: center; z-index: 10; position: relative; animation: fadeInUp 1s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.2; }
+        .hero p { font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+        .cta-button { display: inline-flex; align-items: center; gap: 1rem; padding: 1rem 2.5rem; background-color: var(--accent-color); color: var(--text-primary); text-decoration: none; border-radius: 50px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease; box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(59, 130, 246, 0.5); }
+        .cta-button svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
+        .cta-button:hover svg { transform: translateX(5px); }
+        
+        /* Sections */
+        .about { padding: 8rem 5%; background-color: var(--secondary-bg); }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; text-align: center; }
+        .section-subtitle { text-align: center; color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto 4rem; }
+        .about-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .about-text h3 { font-size: 2rem; margin-bottom: 1.5rem; }
+        .about-text p { color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.8; }
+        .about-image { position: relative; border-radius: 20px; overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5); }
+        .about-image img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+        .about-image:hover img { transform: scale(1.05); }
+        
+        /* Features */
+        .features { padding: 8rem 5%; background-color: var(--primary-bg); }
+        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+        .feature-card { background-color: var(--card-bg); padding: 3rem 2rem; border-radius: 20px; text-align: center; transition: all 0.3s ease; border: 1px solid transparent; }
+        .feature-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2); }
+        .feature-icon { width: 80px; height: 80px; margin: 0 auto 1.5rem; }
+        .feature-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .feature-card p { color: var(--text-secondary); line-height: 1.8; }
+        
+        /* Projects */
+        .projects { padding: 8rem 5%; background-color: var(--secondary-bg); }
+        .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 3rem; max-width: 1200px; margin: 0 auto; }
+        .project-card { background-color: var(--card-bg); border-radius: 20px; overflow: hidden; transition: all 0.3s ease; border: 1px solid transparent; }
+        .project-card:hover { transform: translateY(-10px); border-color: var(--accent-color); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
+        .project-image { width: 100%; height: 250px; overflow: hidden; position: relative; background-color: #222; display: flex; align-items: center; justify-content: center; }
+        .project-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .project-card:hover .project-image img { transform: scale(1.1); }
+        .project-content { padding: 2rem; }
+        .project-content h3 { font-size: 1.5rem; margin-bottom: 1rem; }
+        .project-content p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .project-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--accent-color); text-decoration: none; font-weight: 600; transition: gap 0.3s ease; }
+        .project-link:hover { gap: 1rem; }
+        
+        /* CTA */
+        .cta-section { padding: 8rem 5%; background: linear-gradient(135deg, #1a1a2e 0%, #0a0a0a 100%); text-align: center; position: relative; overflow: hidden; }
+        .cta-section::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .cta-content { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+        .cta-content h2 { font-size: 3rem; margin-bottom: 1.5rem; }
+        .cta-content p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+        
+        /* Contact */
+        .contact { padding: 8rem 5%; background-color: var(--primary-bg); }
+        .contact-content { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .contact-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin-top: 4rem; }
+        .contact-item { padding: 2rem; background-color: var(--card-bg); border-radius: 15px; transition: all 0.3s ease; }
+        .contact-item:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
+        .contact-item h4 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .contact-item p { color: var(--text-secondary); }
+        .contact-item a { color: var(--accent-color); text-decoration: none; transition: color 0.3s ease; }
+        .contact-item a:hover { color: var(--text-primary); }
+        
+        /* Footer */
+        footer { padding: 3rem 5%; background-color: var(--secondary-bg); text-align: center; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; }
+        .footer-content p { color: var(--text-secondary); }
+        .social-links { display: flex; gap: 1.5rem; }
+        .social-links a { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background-color: var(--card-bg); border-radius: 50%; transition: all 0.3s ease; }
+        .social-links a:hover { background-color: var(--accent-color); transform: translateY(-3px); }
+        .social-links img { width: 20px; height: 20px; filter: brightness(0) invert(1); }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .about-content { gap: 3rem; }
+            .features-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            nav { padding: 1rem 5%; } .nav-links { display: none; }
+            .hero { padding: 6rem 5% 4rem; }
+            .hero h1 { font-size: 2.5rem; } .hero p { font-size: 1rem; }
+            .cta-button { font-size: 1rem; padding: 0.9rem 2rem; }
+            .about-content, .features-grid, .projects-grid, .contact-info { grid-template-columns: 1fr; gap: 2rem; }
+            .about, .features, .projects, .contact, .cta-section { padding: 5rem 5%; }
+            .section-title { font-size: 2rem; } .section-subtitle { font-size: 1rem; }
+            .cta-content h2 { font-size: 2rem; } .cta-content p { font-size: 1rem; }
+            .footer-content { flex-direction: column; gap: 2rem; }
+            .feature-card { padding: 2rem 1.5rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.75rem; }
+            .cta-content h2 { font-size: 1.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#home" class="logo">Colin Poort</a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Over mij</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projecten</a></li>
+        </ul>
+        <a href="#contact" class="contact-btn">Contact</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-grid-container" id="heroGrid">
+            <div class="hero-grid-item"><img src="image/IMG_6460.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6461.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6462.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6463.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6464.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6465.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/IMG_6466.jpg" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/gym.png" alt="Gym"></div>
+            <div class="hero-grid-item"><img src="image/gym.png" alt="Gym"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Crafting Modern Web Solutions</h1>
+            <p>Welkom bij mijn portfolio, waar elke website een verhaal vertelt van innovatie en kwaliteit. Ontdek de digitale wereld van webapplicaties, moderne interfaces en gebruiksvriendelijke oplossingen.</p>
+            <a href="#projects" class="cta-button">
+                Bekijk Mijn Werk
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title">Ontmoet Colin</h2>
+        <p class="section-subtitle">Een gepassioneerde ontwikkelaar die graag websites bouwt en digitale oplossingen creëert.</p>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Ik ben Colin Poort</h3>
+                <p>Een 18-jarige Software Developer die zich vooral richt op front-end ontwikkeling. Gedreven door een echte liefde voor het vak, vind ik vreugde in het bouwen van prachtige websites. Of het nu gaat om de energie van een live applicatie of de subtiele emotie in een gebruikersinterface, ik streef er altijd naar het beste uit elk project te halen.</p>
+                <p>Met ervaring in HTML, CSS, JavaScript, PHP, C# en databases zoals MySQL, bouw ik graag responsieve en gebruiksvriendelijke webapplicaties die echt functioneren.</p>
+                <a href="image/ColinCV.pdf" class="cta-button">Download CV</a>
+            </div>
+            <div class="about-image">
+                <img src="image/IMG_4909.jpg" alt="Colin Poort">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="skills">
+        <h2 class="section-title">Wat Maakt Colin Uniek</h2>
+        <p class="section-subtitle">Deze eigenschappen maken mij een waardevolle toevoeging aan elk ontwikkelteam</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="image/commitment.png" alt="Toewijding">
+                </div>
+                <h3>Toegewijd</h3>
+                <p>Ik zet me volledig in voor elk project. Elk ontwikkelproject krijgt mijn volledige aandacht waarbij ik streef naar niet alleen code, maar authentieke oplossingen vol functionaliteit.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="image/innovation.png" alt="Innovatie">
+                </div>
+                <h3>Innovatieve Denker</h3>
+                <p>Ik stuur innovatie aan door het verkennen van moderne frameworks en technologieën. Ik ben altijd op zoek naar nieuwe manieren om uitdagingen aan te pakken.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <img src="image/problem-solve.png" alt="Probleemoplosser">
+                </div>
+                <h3>Probleemoplosser</h3>
+                <p>Het gaat om het oplossen van problemen, het begrijpen van gebruikersbehoeften en het creëren van oplossingen die echt werken. Ik zet complexe uitdagingen om in eenvoudige oplossingen.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2 class="section-title">Mijn Projecten</h2>
+        <p class="section-subtitle">Een selectie van mijn recente werk, vol creativiteit en technische expertise</p>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="image/spongebob.png" alt="Fall Game">
+                </div>
+                <div class="project-content">
+                    <h3>Fall Game</h3>
+                    <p>Een interactief spel volledig gebouwd met JavaScript. Dit project demonstreert mijn vaardigheden in game development en animaties.</p>
+                    <a href="/game" class="project-link" target="_blank">Bekijk Project →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="image/gastenboek.jpg" alt="Gastenboek">
+                </div>
+                <div class="project-content">
+                    <h3>Gastenboek</h3>
+                    <p>Een elegante gastenboek applicatie waarin bezoekers berichten kunnen achterlaten. Gebouwd met PHP en JSON.</p>
+                    <a href="/gastenboek" class="project-link" target="_blank">Bekijk Project →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="image/GetImage.png" alt="Gamecraft">
+                </div>
+                <div class="project-content">
+                    <h3>Gamecraft</h3>
+                    <p>Een educatief platform ontworpen om kennis en vaardigheden op het gebied van technologie te delen.</p>
+                    <a href="/gamecraft/html/" class="project-link" target="_blank">Bekijk Project →</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="image/pixlr2.png" alt="Ergowijzer">
+                </div>
+                <div class="project-content">
+                    <h3>Ergowijzer</h3>
+                    <p>Een collaboratief groepsproject waarbij we een ergonomische website hebben ontwikkeld.</p>
+                    <a href="/l3-pro-3-ergowijzer-dumble" class="project-link" target="_blank">Bekijk Project →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Laten we iets geweldigs bouwen</h2>
+            <p>Webontwikkeling is voor mij meer dan alleen code schrijven. Het gaat om het creëren van ervaringen en verhalen vertellen. Of je nu op zoek bent naar een moderne website, een webapplicatie of een technische oplossing, ik werk graag samen om jouw visie tot leven te brengen.</p>
+            <a href="#contact" class="cta-button">
+                Neem Contact Op
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="20" height="20">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <h2 class="section-title">Neem Contact Op</h2>
+            <p class="section-subtitle">Klaar om samen te werken? Ik hoor graag van je!</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>Email</h4>
+                    <p><a href="mailto:colinpoort@hotmail.com">colinpoort@hotmail.com</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Telefoon</h4>
+                    <p><a href="tel:+31628449633">06 2844 9633</a></p>
+                </div>
+                <div class="contact-item">
+                    <h4>Locatie</h4>
+                    <p>Kiekendief 1<br>3752 SM Bunschoten</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2024 Alle rechten voorbehouden - Colin Poort</p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/colin_poort/" target="_blank">
+                    <img src="image/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/in/colin-poort-587a7b295/" target="_blank">
+                    <img src="image/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/ColinPoort" target="_blank">
+                    <img src="image/github.png" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section-title, .section-subtitle, .about-text, .about-image, .feature-card, .project-card, .cta-content, .contact-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Hero grid zoom-out effect on scroll with scroll locking
+        const heroGrid = document.getElementById('heroGrid');
+        const heroSection = document.getElementById('home');
+        const heroContent = document.querySelector('.hero-content');
+        let scrollAccumulator = 0;
+        let isZoomComplete = false;
+        const maxScroll = 2000; // Scroll distance needed to complete zoom
+        const scrollBuffer = 200; // Extra scroll needed after animation completes
+        const totalScrollNeeded = maxScroll + scrollBuffer; // 2200 total
+
+        console.log('Hero grid element:', heroGrid);
+        console.log('Hero section:', heroSection);
+        console.log('Hero content:', heroContent);
+
+        // Prevent actual page scroll until zoom completes
+        window.addEventListener('wheel', (e) => {
+            // Handle zoom effect when at top of page
+            if (window.scrollY < 100) {
+                // Check if scrolling down and not reached buffer limit
+                if (e.deltaY > 0 && scrollAccumulator < totalScrollNeeded) {
+                    e.preventDefault();
+                    isZoomComplete = false;
+                }
+                // Check if scrolling up and zoom accumulator is active
+                else if (e.deltaY < 0 && scrollAccumulator > 0) {
+                    e.preventDefault();
+                    isZoomComplete = false;
+                }
+
+                // Accumulate scroll (both directions)
+                scrollAccumulator += e.deltaY;
+                scrollAccumulator = Math.max(0, Math.min(scrollAccumulator, totalScrollNeeded));
+
+                // Calculate scale based on accumulated scroll
+                // Cap the scroll percent at 1 so scale stays locked at 0.33 during buffer
+                const scrollPercent = Math.min(scrollAccumulator / maxScroll, 1);
+                const scale = 1 - (scrollPercent * 0.67); // 1 to 0.33 (reveals all 9 images)
+
+                heroGrid.style.transform = `translate(-50%, -50%) scale(${scale})`;
+
+                // Fade out hero content as animation starts
+                // Start fading immediately (at 0), fully faded by 60% of animation
+                const fadeEnd = maxScroll * 0.6; // Fully faded at 1200
+
+                if (scrollAccumulator <= 0) {
+                    heroContent.style.opacity = '1';
+                } else if (scrollAccumulator >= fadeEnd) {
+                    heroContent.style.opacity = '0';
+                } else {
+                    const fadeProgress = scrollAccumulator / fadeEnd;
+                    heroContent.style.opacity = (1 - fadeProgress).toString();
+                }
+
+                // Log status
+                if (scrollAccumulator > maxScroll) {
+                    console.log('Buffer period - Scroll:', scrollAccumulator, 'Scale locked at:', scale.toFixed(2));
+                } else {
+                    console.log('Animating - Scroll:', scrollAccumulator, 'Scale:', scale.toFixed(2));
+                }
+
+                // Only allow scrolling when animation is 100% complete AND buffer reached
+                if (scale <= 0.34 && e.deltaY > 0 && scrollAccumulator >= totalScrollNeeded) {
+                    // Animation complete + buffer reached, allow normal scrolling
+                    isZoomComplete = true;
+                    console.log('Zoom complete! Normal scrolling enabled at:', scrollAccumulator);
+                } else if (e.deltaY > 0 && !isZoomComplete) {
+                    // Still in locked state, prevent scroll
+                    e.preventDefault();
+                }
+
+                // When zoomed back in completely
+                if (scrollAccumulator <= 0 && e.deltaY < 0) {
+                    console.log('Fully zoomed in!');
+                }
+            }
+            // If scrolled down the page and scrolling back up, re-enable zoom effect
+            else if (window.scrollY > 0 && e.deltaY < 0 && window.scrollY < 200) {
+                // Reset when scrolling back to top
+                if (scrollAccumulator >= maxScroll) {
+                    isZoomComplete = false;
+                }
+            }
+        }, { passive: false });
+        
+        // Regular scroll handler for navbar
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Set initial transform (shows center image only)
+        console.log('Setting initial transform');
+        heroGrid.style.transform = 'translate(-50%, -50%) scale(1)';
+        
+        // Split nav links into letter spans for animation
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            const text = link.textContent;
+            link.textContent = '';
+            
+            text.split('').forEach((letter, index) => {
+                const span = document.createElement('span');
+                // Preserve spaces as non-breaking spaces
+                span.innerHTML = letter === ' ' ? '&nbsp;' : letter;
+                span.style.animationDelay = `${index * 0.05}s`;
+                link.appendChild(span);
+            });
+        });
+    </script>
+</body>
+</html>
