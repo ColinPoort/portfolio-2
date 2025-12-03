@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Experience - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', Helvetica, Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .nav-logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+        }
+
+        /* ROLLING TEXT EFFECT */
+        .rolling-link {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 400;
+            height: 1.2em;
+            line-height: 1.2em;
+        }
+
+        .rolling-link span {
+            display: block;
+            transition: transform 200ms cubic-bezier(0.5, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .rolling-link span::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .rolling-link:hover span {
+            transform: translateY(-100%);
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+        }
+
+        /* --- HERO SECTION (FIXED) --- */
+        .hero-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 7vw;
+            font-weight: 900;
+            line-height: 1.1;
+            /* Iets meer ruimte voor de masker */
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        /* STIJLEN VOOR HET SCROLLENDE WOORD */
+        .word-mask {
+            display: inline-block;
+            height: 1em;
+            /* Hoogte van 1 regel tekst */
+            overflow: hidden;
+            vertical-align: bottom;
+            position: relative;
+            /* Zorg dat de tekst niet buiten de masker komt */
+        }
+
+        .word-track {
+            display: flex;
+            flex-direction: column;
+            /* Geen transition hier voor directe scroll-respons */
+            will-change: transform;
+        }
+
+        .word-track span {
+            display: block;
+            height: 100%;
+            line-height: 1;
+            /* Zorg dat de regelhoogte matcht */
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* --- CONTENT SECTION --- */
+        .content-section {
+            position: relative;
+            z-index: 2;
+            margin-top: 100vh;
+            background-color: #000;
+            min-height: 100vh;
+            padding: 120px 5%;
+        }
+
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-section {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 120px;
+            max-width: 1000px;
+        }
+
+        .about-image {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%);
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .about-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #e0e0e0;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .about-section {
+                flex-direction: column;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .about-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-text h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* --- PROJECT GRID --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            width: 100%;
+        }
+
+        .project-card {
+            position: relative;
+            opacity: 0;
+            transform: translateY(100px);
+            transition: all 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            color: #fff;
+            display: block;
+        }
+
+        .projects-grid .project-card:nth-child(even) {
+            margin-top: 150px;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .project-card:hover .image-container img {
+            transform: scale(1.05);
+        }
+
+        /* --- HOVER OVERLAY --- */
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .project-description {
+            color: #fff;
+            font-size: 1.2rem;
+            font-weight: 500;
+            line-height: 1.5;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-card:hover .project-description {
+            transform: translateY(0);
+        }
+
+        .project-info {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .project-tags {
+            font-size: 0.9rem;
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 14vw;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .projects-grid .project-card:nth-child(even) {
+                margin-top: 0;
+            }
+
+            .image-container {
+                height: 400px;
+            }
+
+            .content-section {
+                padding: 80px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <a href="#home" class="nav-logo">Colin Poort</a>
+        <div class="nav-links">
+            <a href="#home" class="rolling-link"><span data-text="Home">Home</span></a>
+            <a href="#about" class="rolling-link"><span data-text="About">About</span></a>
+            <a href="#work" class="rolling-link"><span data-text="Work">Work</span></a>
+        </div>
+    </nav>
+
+    <div class="hero-container" id="home">
+        <video autoplay muted loop playsinline>
+            <source src="https://videos.pexels.com/video-files/3129671/3129671-uhd_2560_1440_24fps.mp4"
+                type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+
+        <div class="hero-text">
+            <h1>We Build<br>Digital<br>
+                <!-- Scrollende Woorden Container -->
+                <span class="word-mask">
+                    <span class="word-track">
+                        <span>Experiences</span>
+                        <span>Solutions</span>
+                        <span>Products</span>
+                        <span>Futures</span>
+                    </span>
+                </span>
+            </h1>
+            <p>Creative Studio</p>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <div class="content-wrapper">
+
+            <div class="about-section" id="about">
+                <div class="about-image">
+                    <img src="image/IMG_4909.jpg" alt="Profile Photo">
+                </div>
+                <div class="about-text">
+                    <h2>Hi, I'm Colin</h2>
+                    <p>
+                        Ik ben een gepassioneerde digital creator die de grens opzoekt tussen design en technologie.
+                        Mijn doel is om digitale ervaringen te creëren die niet alleen functioneel zijn, maar ook een
+                        blijvende indruk achterlaten.
+                    </p>
+                </div>
+            </div>
+
+            <div class="projects-grid" id="work">
+                <a href="#" class="project-card">
+                    <div class="image-container">
+                        <img src="image/wmonster.png" alt="Monster Energy">
+                        <div class="project-overlay">
+                            <p class="project-description">Een high-energy webdesign dat de kracht en dynamiek van het
+                                merk Monster Energy weerspiegelt.</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-title">Monster Energy</span>
+                        <span class="project-tags">Web Design • 2024</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="image-container">
+                        <img src="image/lightweight.png" alt="Lightweight">
+                        <div class="project-overlay">
+                            <p class="project-description">Complete frontend en backend development voor een modern
+                                e-commerce platform.</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-title">Lightweight</span>
+                        <span class="project-tags">Development • 2024</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="image-container">
+                        <img src="image/kendrick.png" alt="Kendrick">
+                        <div class="project-overlay">
+                            <p class="project-description">Artistiek concept en visuele identiteit voor de lancering van
+                                een nieuw album.</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-title">Kendrick</span>
+                        <span class="project-tags">Concept • 2023</span>
+                    </div>
+                </a>
+
+                <a href="#" class="project-card">
+                    <div class="image-container">
+                        <img src="image/hangout.png" alt="The Hangout">
+                        <div class="project-overlay">
+                            <p class="project-description">Gebruiksvriendelijk app design gericht op sociale interactie
+                                en community building.</p>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <span class="project-title">The Hangout</span>
+                        <span class="project-tags">App Design • 2023</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 1. Scroll Effect voor het woord
+        const wordTrack = document.querySelector('.word-track');
+        const contentSection = document.querySelector('.content-section');
+        const speedFactor = 0.5;
+        let maxTranslateY = 0;
+
+        function updateLayout() {
+            if (wordTrack && contentSection) {
+                // Bereken de hoogte van één woord
+                const wordHeight = wordTrack.firstElementChild.offsetHeight;
+                // Aantal woorden
+                const wordCount = wordTrack.children.length;
+
+                // Bereken de maximale verschuiving (tot het laatste woord)
+                maxTranslateY = (wordCount - 1) * wordHeight;
+
+                // Bereken hoeveel pixels we moeten scrollen om het laatste woord te tonen
+                const scrollNeeded = maxTranslateY / speedFactor;
+
+                // Pas de margin-top aan zodat de content pas in beeld komt na de animatie
+                contentSection.style.marginTop = `calc(100vh + ${scrollNeeded}px)`;
+            }
+        }
+
+        // Update layout direct, bij laden en resizen
+        updateLayout();
+        window.addEventListener('load', updateLayout);
+        window.addEventListener('resize', updateLayout);
+
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+
+            // Bereken de verschuiving
+            let currentTranslate = scrollY * speedFactor;
+
+            // Stop de animatie als we bij het laatste woord zijn
+            if (currentTranslate > maxTranslateY) {
+                currentTranslate = maxTranslateY;
+            }
+
+            // Verplaats de track
+            wordTrack.style.transform = `translateY(-${currentTranslate}px)`;
+        });
+
+        // 2. Animatie voor projecten (Fade Up)
+        const observerOptions = {
+            threshold: 0.05
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.project-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+
+</body>
+
+</html>
