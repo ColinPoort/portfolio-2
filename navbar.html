@@ -1,169 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-     :root {
-  --white: #ffffff;
-  --dark-gray: #161616;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    :root {
+      --white: #f1f5f9;
+      --dark-gray: #0f172a;
+    }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-}
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      /* Prevent horizontal scrolling */
+    }
 
-.navbar {
-  color: var(--white);
-  padding: 20px 0;
-  background-color: var(--dark-gray);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  transition: top 0.3s, transform 0.3s;
-}
+    .navbar {
+      color: var(--white);
+      padding: 20px 0;
+      background-color: var(--dark-gray);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      transition: top 0.3s, transform 0.3s;
+    }
 
-.navbar img {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-}
+    .navbar img {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+    }
 
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  border: none;
-  background: transparent;
-  padding: 0;
-}
+    .menu-toggle {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      padding: 0;
+    }
 
-.menu-toggle div {
-  width: 30px;
-  height: 2px; /* Adjusted height */
-  background-color: var(--white);
-  margin: 5px 0;
-  transition: 0.3s;
-}
+    .menu-toggle div {
+      width: 30px;
+      height: 2px;
+      /* Adjusted height */
+      background-color: var(--white);
+      margin: 5px 0;
+      transition: 0.3s;
+    }
 
-.nav-links {
-  display: none;
-  flex-direction: column;
-  position: fixed;
-  top: 60px; /* Position below the navbar */
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.8); /* Dark background with opacity */
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  border-radius: 0;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-100%); /* Start hidden */
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out; /* Smooth sliding and fading effect */
-}
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 60px;
+      /* Position below the navbar */
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      /* Dark background with opacity */
+      width: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      border-radius: 0;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-100%);
+      /* Start hidden */
+      transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      /* Smooth sliding and fading effect */
+    }
 
-.nav-links.active {
-  display: flex;
-  transform: translateY(0); 
-  opacity: 1;
-}
+    .nav-links.active {
+      display: flex;
+      transform: translateY(0);
+      opacity: 1;
+    }
 
-.nav-links li {
-  margin: 15px 0;
-  font-size: 20px;
-}
+    .nav-links li {
+      margin: 15px 0;
+      font-size: 20px;
+    }
 
-.nav-links a {
-  text-decoration: none;
-  color: var(--white);
-  font-weight: bold;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: var(--white);
+      font-weight: bold;
+    }
 
-.menu-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-  backdrop-filter: blur(5px); /* Apply blur effect */
-  z-index: 900; /* Behind the dropdown menu */
-  transition: opacity 0.3s ease-in-out;
-}
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent black background */
+      backdrop-filter: blur(5px);
+      /* Apply blur effect */
+      z-index: 900;
+      /* Behind the dropdown menu */
+      transition: opacity 0.3s ease-in-out;
+    }
 
-.menu-overlay.active {
-  display: block;
-}
+    .menu-overlay.active {
+      display: block;
+    }
 
-.nav {
-  list-style: none;
-}
+    .nav {
+      list-style: none;
+    }
 
-@media (min-width: 768px) {
-  .menu-toggle {
-    display: none;
-  }
+    @media (min-width: 768px) {
+      .menu-toggle {
+        display: none;
+      }
 
-  .nav-links {
-    display: flex;
-    flex-direction: row;
-    position: static;
-    width: auto;
-    height: auto;
-    background: transparent;
-    transform: none;
-    opacity: 1;
-  }
+      .nav-links {
+        display: flex;
+        flex-direction: row;
+        position: static;
+        width: auto;
+        height: auto;
+        background: transparent;
+        transform: none;
+        opacity: 1;
+      }
 
-  .nav-links li {
-    margin: 0 15px;
-  }
-}
-
-    </style>
+      .nav-links li {
+        margin: 0 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <header class="navbar" id="navbar">
-        <img src="image/IMG_4909.jpg" alt="Logo" />
-        <button class="menu-toggle" id="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
-        </button>
-        <ul class="nav nav-links" id="nav">
-            <li><a class="hover-underline-animation" href="#home">Home</a></li>
-            <li><a class="hover-underline-animation" href="#about">About</a></li>
-            <li><a class="hover-underline-animation" href="#projects">Projects</a></li>
-            <li id="contact"><a href="#contact-form">Contact me</a></li>
-        </ul>
-    </header>
-    <div class="menu-overlay" id="menu-overlay"></div> <!-- Overlay element -->
+  <header class="navbar" id="navbar">
+    <img src="image/IMG_4909.jpg" alt="Logo" />
+    <button class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </button>
+    <ul class="nav nav-links" id="nav">
+      <li><a class="hover-underline-animation" href="#home">Home</a></li>
+      <li><a class="hover-underline-animation" href="#about">About</a></li>
+      <li><a class="hover-underline-animation" href="#projects">Projects</a></li>
+      <li id="contact"><a href="#contact-form">Contact me</a></li>
+    </ul>
+  </header>
+  <div class="menu-overlay" id="menu-overlay"></div> <!-- Overlay element -->
 
-    
-    <script>
-      document.getElementById("menu-toggle").addEventListener("click", () => {
-        const navLinks = document.getElementById("nav");
-        const menuOverlay = document.getElementById("menu-overlay");
-        const isActive = navLinks.classList.toggle("active");
-        menuOverlay.classList.toggle("active", isActive);
-      });
 
-      document.getElementById("menu-overlay").addEventListener("click", () => {
-        const navLinks = document.getElementById("nav");
-        const menuOverlay = document.getElementById("menu-overlay");
-        navLinks.classList.remove("active");
-        menuOverlay.classList.remove("active");
-      });
-    </script>
-</body></html>
+  <script>
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      const navLinks = document.getElementById("nav");
+      const menuOverlay = document.getElementById("menu-overlay");
+      const isActive = navLinks.classList.toggle("active");
+      menuOverlay.classList.toggle("active", isActive);
+    });
+
+    document.getElementById("menu-overlay").addEventListener("click", () => {
+      const navLinks = document.getElementById("nav");
+      const menuOverlay = document.getElementById("menu-overlay");
+      navLinks.classList.remove("active");
+      menuOverlay.classList.remove("active");
+    });
+  </script>
+</body>
+
+</html>
